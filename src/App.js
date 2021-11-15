@@ -1,36 +1,21 @@
 import React, { useState} from 'react';
-
+import Weather from './components/Weather';
 import './css/main.css';
-
-const displayWeather = () => {
-
-}
 
 const apiKey = {
   key: "c65ae928fe770da8a48731205f698b15",
   link: "https://api.openweathermap.org/data/2.5/"
 }
 
-function dateBuilder(d) {
-  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-
-  let day = days[dateBuilder(d)];
-  let month = months[d.getMonth()];
-  let date = d.getDate();
-  let year = d.getYear();
-
-  return `${day} ${date} ${month} ${year}`;
-
-}
-
 function App() {
   const [weather, setWeather] = useState({});
 
+
+
+
+
   let [country, setCountry] = useState(null);
   let [city, setCity] = useState(null);
-
-
 
   function funcSetCountry(country) {
     setCountry(country.target.value);
@@ -42,6 +27,7 @@ function App() {
     console.log("City: " + city);
   }
 
+  let foundWeather = false;
   const findWeather = () => {
 
     let lookup = require('country-code-lookup');
@@ -60,42 +46,54 @@ function App() {
         fetch(`${apiKey.link}weather?q=${city},${country}&units=metric&appid=${apiKey.key}`)
         .then(res => res.json())
         .then(result => { 
-          displayWeather(result);
+          foundWeather = true;
+          
           console.log(result);
+          setWeather(result);
+          
+          console.log(weather);
         });
+
       } catch (error) {
         alert("Invalid Country or City");
       }
     }
-
+    
 
   }
 
   return (
-    <div className="main">
-      <div id="searchForm">
-        <h3>Country name</h3>
-        <input
-          type="text"
-          required
-          onChange={funcSetCountry}
-        />
-        <h3>City name</h3>
-        <input
-          type="text"
-          required
-          onChange={funcSetCity}
-        />
-        <br />
-        <button onClick={findWeather}>
-          Search
-        </button>
-      </div>
-      <div id="output">
+    <div>      
+        <div id="searchForm">
+          <h3>Country name</h3>
+          <input
+            type="text"
+            required
+            onChange={funcSetCountry}
+          />
+          <h3>City name</h3>
+          <input
+            type="text"
+            required
+            onChange={funcSetCity}
+          />
+          <br /><br />
+          <button onClick={findWeather}>
+            Search
+          </button>
+        </div>          
+        {(typeof weather.main != "undefined") ? (
+        <Weather
+          city={weather.name}
+          country={weather.sys.country}
+          temp={weather.main.temp}
+         />
 
-      </div>
+        ) : ('')}
     </div>
   );
+
+
 }
 
 export default App;
