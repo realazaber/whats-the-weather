@@ -13,12 +13,14 @@ function Weather(props) {
                 Weather in {props.city}, {props.country}.
                 </h3>
                 <h4>
-                Temperature: {Math.round(props.temp)} degrees celsius.
+                Temperature: {Math.round(props.temp)} °C.
                 <br />
-                Feels like {Math.round(props.feelsLike)} degrees.
+                Feels like {Math.round(props.feelsLike)} °C.
                 </h4>
                 <h4>
-                    Min: {props.minTemp} Max: {props.maxTemp}
+                    Min: {props.minTemp} °C. 
+                    <br />
+                    Max: {props.maxTemp} °C.
                 </h4>
             </div>
         )

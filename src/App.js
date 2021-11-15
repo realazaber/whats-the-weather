@@ -62,6 +62,11 @@ function App() {
 
   return (
     <div>      
+      <main>
+
+      <h1>
+          What is the weather?
+        </h1>
         <div id="searchForm">
           <h3>Country name</h3>
           <input
@@ -91,10 +96,24 @@ function App() {
          />
 
         ) : (
-          <div>
+          <h3 id="fillInPrompt">
             Please fill in country name and city name.
-          </div>
+          </h3>
         )}
+
+      </main>
+
+
+
+        <footer>
+          <p>
+            &copy; Therealcoolpup
+          </p>
+          <p>
+            Made with openweather API
+          </p>
+          
+        </footer>
     </div>
   );
 

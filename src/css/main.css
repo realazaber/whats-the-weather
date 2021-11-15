@@ -1,5 +1,108 @@
+:root {
+    --primaryText: white;
+    --secondaryText: blue;
+
+    --primaryBackground: #202F53;
+    --secondaryBackground: #42A5F5;
+}
+
+
 body {
     display: flex;
     justify-content: center;
     text-align: center;
+    background-image: url("../imgs/home.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main {
+    margin: 0 auto;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    
+}
+
+h1, h3, h4 {
+    color: var(--primaryText);
+}
+
+input {
+    background-color: rgba(245, 245, 245, 0.89);
+    width: 80%;
+    height: 30px;
+    border: 3px solid grey;
+    border-radius: 10px;
+    transition-duration: 500ms;
+
+    font-size: larger;
+    color: rgb(56, 56, 56);
+}
+
+input:focus {
+    transition-duration: 500ms;
+    border-color: var(--secondaryBackground);
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 20px;
+    background-color: var(--secondaryBackground);
+    opacity: 1;
+    font-size: 20px;
+    transition-duration: 500ms;
+}
+
+button:hover {
+    border-radius: 30px;
+    transition-duration: 500ms;
+}
+
+button:active {
+    color: var(--primaryBackground);
+}
+
+#output {
+    display: block;
+    background-color: var(--primaryBackground);
+    width: 100%;
+    height: 40%;
+    margin-top: 50px;
+    padding: 20px;
+    opacity: 0.9;
+    border-radius: 20px;
+
+}
+
+#output h3 {
+    font-size: 30px;
+}
+
+#output h4 {
+    font-size: 25px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--primaryBackground);
+    
+    color: white;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 10px;
 }
