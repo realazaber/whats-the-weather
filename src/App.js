@@ -105,15 +105,15 @@ function App() {
 
 
 
-        <footer>
-          <p>
-            &copy; Therealcoolpup
-          </p>
-          <p>
-            Made with openweather API
-          </p>
-          
-        </footer>
+      <footer>
+        <p>
+          &copy; Therealcoolpup
+        </p>
+        <p>
+          Made with openweather API
+        </p>
+        
+      </footer>
     </div>
   );
 
