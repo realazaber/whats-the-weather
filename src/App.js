@@ -2,14 +2,9 @@ import React, { useState} from 'react';
 
 import './css/main.css';
 
-
-let country = "";
-let city = "";
-
 const displayWeather = () => {
 
 }
-
 
 const apiKey = {
   key: "c65ae928fe770da8a48731205f698b15",
@@ -29,10 +24,7 @@ function dateBuilder(d) {
 
 }
 
-
-
 function App() {
-  const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
 
   let [country, setCountry] = useState(null);
@@ -57,18 +49,23 @@ function App() {
     console.log("City: " + city);
     console.log("Country: " + country);
 
-    country = lookup.byCountry(country).iso2;
 
-    console.log("Country: " + country);
 
     if ((city !== "" || city !== null) && (country !== "" || country !== null)) {
-      fetch(`${apiKey.link}weather?q=${city},${country}&units=metric&appid=${apiKey.key}`)
-      .then(res => res.json())
-      .then(result => { 
-        displayWeather(result);
-        setQuery('');
-        console.log(result);
-      });
+      try {
+
+        country = lookup.byCountry(country).iso2;
+        console.log("Country code: " + country);
+
+        fetch(`${apiKey.link}weather?q=${city},${country}&units=metric&appid=${apiKey.key}`)
+        .then(res => res.json())
+        .then(result => { 
+          displayWeather(result);
+          console.log(result);
+        });
+      } catch (error) {
+        alert("Invalid Country or City");
+      }
     }
 
 
