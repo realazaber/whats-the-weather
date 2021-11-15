@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { Fragment, useState} from 'react';
 import Weather from './components/Weather';
 import './css/main.css';
 
@@ -27,7 +27,7 @@ function App() {
     console.log("City: " + city);
   }
 
-  let foundWeather = false;
+  
   const findWeather = () => {
 
     let lookup = require('country-code-lookup');
@@ -46,7 +46,7 @@ function App() {
         fetch(`${apiKey.link}weather?q=${city},${country}&units=metric&appid=${apiKey.key}`)
         .then(res => res.json())
         .then(result => { 
-          foundWeather = true;
+          
           
           console.log(result);
           setWeather(result);
@@ -61,10 +61,10 @@ function App() {
   }
 
   return (
-    <div>      
+    <Fragment>
+          <div id="mainContainer">      
       <main>
-
-      <h1>
+        <h1>
           What is the weather?
         </h1>
         <div id="searchForm">
@@ -93,6 +93,7 @@ function App() {
           feelsLike={weather.main.feels_like}
           minTemp={weather.main.temp_min}
           maxTemp={weather.main.temp_max}
+          description={weather.weather[0].main}
          />
 
         ) : (
@@ -101,20 +102,25 @@ function App() {
           </h3>
         )}
 
+          
+
+                  <div id="test">
+
+                  </div>
+
+
+
+
       </main>
-
-
-
-      <footer>
-        <p>
-          &copy; Therealcoolpup
-        </p>
-        <p>
-          Made with openweather API
-        </p>
-        
-      </footer>
     </div>
+          <div id="footer">
+          <p>
+            &copy; Therealcoolpup
+            <br />
+            Made with openweather API
+          </p>
+        </div>
+    </Fragment>
   );
 
 

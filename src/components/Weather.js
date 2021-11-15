@@ -4,7 +4,7 @@ function Weather(props) {
     
 
     if (props.city !== undefined && props.country !== undefined) {
-        let lookup = require('country-code-lookup');
+        
         
         return (
         
@@ -12,6 +12,9 @@ function Weather(props) {
                 <h3>
                 Weather in {props.city}, {props.country}.
                 </h3>
+                <h4>
+                    Description: {props.description}
+                </h4>
                 <h4>
                 Temperature: {Math.round(props.temp)} °C.
                 <br />
