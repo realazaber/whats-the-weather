@@ -58,8 +58,6 @@ function App() {
         alert("Invalid Country or City");
       }
     }
-    
-
   }
 
   return (
@@ -87,9 +85,16 @@ function App() {
           city={weather.name}
           country={weather.sys.country}
           temp={weather.main.temp}
+          feelsLike={weather.main.feels_like}
+          minTemp={weather.main.temp_min}
+          maxTemp={weather.main.temp_max}
          />
 
-        ) : ('')}
+        ) : (
+          <div>
+            Please fill in country name and city name.
+          </div>
+        )}
     </div>
   );
 

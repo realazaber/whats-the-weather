@@ -14,9 +14,11 @@ function Weather(props) {
                 </h3>
                 <h4>
                 Temperature: {Math.round(props.temp)} degrees celsius.
+                <br />
+                Feels like {Math.round(props.feelsLike)} degrees.
                 </h4>
                 <h4>
-                Description: 
+                    Min: {props.minTemp} Max: {props.maxTemp}
                 </h4>
             </div>
         )
