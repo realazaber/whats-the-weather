@@ -29,14 +29,29 @@ function App() {
     //To get the country code.
     let lookup = require('country-code-lookup');
 
+
+    //Capitalise each word in a string.
+    function validateInput(strInput) {
+
+      let tmpString = strInput.toLowerCase().split(' ');
+      for (let i = 0; i < tmpString.length; i++) {
+        console.log("Fart: " + tmpString[i]);
+        tmpString[i] = tmpString[i].charAt(0).toUpperCase() + tmpString[i].slice(1);
+      }
+      tmpString = tmpString.join(' ');
+      return tmpString;
+    }
+
     //Remove spaces from end of strings.
     city = city.trim();
     country = country.trim();
 
-    //Capitalise the first letters.
-    city = city.charAt(0).toUpperCase() + city.slice(1);
-    country = country.charAt(0).toUpperCase() + country.slice(1);
-    
+    //If there are multiple words in the string
+    //capitalise each word.
+
+    city = validateInput(city);
+    country = validateInput(country);
+
     //Log to console for debugging.
     console.log("City: " + city);
     console.log("Country: " + country);
