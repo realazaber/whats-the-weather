@@ -32,6 +32,14 @@ function App() {
 
     let lookup = require('country-code-lookup');
 
+    city = city.trim();
+    country = country.trim();
+
+    city = city.charAt(0).toUpperCase() + city.slice(1);
+    country = country.charAt(0).toUpperCase() + country.slice(1);
+
+
+    
     console.log("City: " + city);
     console.log("Country: " + country);
 
