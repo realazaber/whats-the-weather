@@ -10,10 +10,6 @@ const apiKey = {
 function App() {
   const [weather, setWeather] = useState({});
 
-
-
-
-
   let [country, setCountry] = useState(null);
   let [city, setCity] = useState(null);
 
@@ -30,21 +26,22 @@ function App() {
   
   const findWeather = () => {
 
+    //To get the country code.
     let lookup = require('country-code-lookup');
 
+    //Remove spaces from end of strings.
     city = city.trim();
     country = country.trim();
 
+    //Capitalise the first letters.
     city = city.charAt(0).toUpperCase() + city.slice(1);
     country = country.charAt(0).toUpperCase() + country.slice(1);
-
-
     
+    //Log to console for debugging.
     console.log("City: " + city);
     console.log("Country: " + country);
 
-
-
+    //If input fields have been filled in then get the weather data.
     if ((city !== "" || city !== null) && (country !== "" || country !== null)) {
       try {
 
@@ -54,8 +51,7 @@ function App() {
         fetch(`${apiKey.link}weather?q=${city},${country}&units=metric&appid=${apiKey.key}`)
         .then(res => res.json())
         .then(result => { 
-          
-          
+                    
           console.log(result);
           setWeather(result);
           
@@ -92,7 +88,13 @@ function App() {
           <button onClick={findWeather}>
             Search
           </button>
-        </div>          
+        </div>    
+
+        {/* 
+        If the form has been filled in then 
+        render the Weather component with the
+        corresponding values.
+        */}
         {(typeof weather.main != "undefined") ? (
         <Weather
           city={weather.name}
@@ -113,9 +115,6 @@ function App() {
         <div id="test">
 
         </div>
-
-
-
 
       </main>
     </div>
